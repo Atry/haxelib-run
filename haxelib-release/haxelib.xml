@@ -1,7 +1,7 @@
 <project url="https://github.com/Atry/haxelib-run" name="haxelib-run" license="BSD">
+    <user name="Atry"/>
     <tag v="neko"/>
     <tag v="haxelib"/>
-    <tag v="haxelib run"/>
-    <description></description>
-    <version name="1.0"></version>
+    <description>Print a haxelib library's path, name and version.</description>
+    <version name="1.0">Initial release.</version>
 </project>
