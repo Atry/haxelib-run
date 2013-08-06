@@ -1,11 +1,11 @@
 // Copyright (c) Copyright 2013 深圳市葡萄藤网络科技有限公司 (Shenzhen Putaoteng Network Technology Co., Ltd.)
 // All rights reserved.
-// 
+//
 // Author: 杨博 (Yang Bo) <pop.atry@gmail.com>
-// 
+//
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
-// 
+//
 // * Redistributions of source code must retain the above copyright notice,
 //   this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright notice,
@@ -14,7 +14,7 @@
 // * Neither the name of the <ORGANIZATION> nor the names of its contributors
 //   may be used to endorse or promote products derived from this software
 //   without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 // AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 // IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -29,6 +29,8 @@
 
 package com.dongxiguo.utils;
 
+import haxe.Json;
+
 class HaxelibRun
 {
 	public static function haxelibXml():Xml
@@ -36,9 +38,23 @@ class HaxelibRun
 		return Xml.parse(sys.io.File.getContent(Sys.getCwd()+"haxelib.xml"));
 	}
 
+	public static function haxelibJson():Dynamic
+	{
+
+		return Json.parse(sys.io.File.getContent(Sys.getCwd()+"haxelib.json"));
+	}
+
 	public static function libraryName():String
 	{
-		return haxelibXml().elementsNamed("project").next().get("name");
+		return
+      try
+      {
+        haxelibXml().elementsNamed("project").next().get("name");
+      }
+      catch (e:Dynamic)
+      {
+        haxelibJson().name;
+      }
 	}
 
 	public static function run(args:Array<String>):Null<Int>
