@@ -20,6 +20,6 @@ haxelib-release/com/dongxiguo/utils/HaxelibRun.hx
 	haxe -cp haxelib-release -main com.dongxiguo.utils.HaxelibRun -xml $@
 
 clean:
-	-$(RM) release.zip
+	-$(RM) release.zip haxelib-release/run.n
 
 .PHONY: all clean install
